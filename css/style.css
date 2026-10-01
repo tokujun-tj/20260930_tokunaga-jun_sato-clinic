@@ -549,7 +549,7 @@ img {
 
 .greeting-copy p {
   margin: 0 0 22px;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.8;
 }
 
@@ -603,7 +603,7 @@ img {
 
 .medical-item p {
   margin: 0;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.8;
 }
 
@@ -828,8 +828,16 @@ img {
 }
 
 .staff {
+  width: 100%;
   background: #f2faf8;
   padding: 92px 0 70px;
+}
+
+.staff > * {
+  width: calc(100% - 40px);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .staff .center-title {
@@ -850,6 +858,10 @@ img {
   gap: 54px;
   align-items: center;
   margin-bottom: 40px;
+}
+
+.staff-item:last-of-type {
+  margin-bottom: 0;
 }
 
 .staff-item img {
