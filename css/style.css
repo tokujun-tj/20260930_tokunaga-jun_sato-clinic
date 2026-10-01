@@ -529,7 +529,7 @@ img {
 }
 
 .greeting-inner {
-  min-height: 760px;
+  min-height: 1090px;
   display: grid;
   grid-template-columns: 390px 1fr;
   gap: 72px;
@@ -561,13 +561,6 @@ img {
 
 .medical {
   padding: 72px 0 90px;
-}
-
-.medical-intro {
-  margin: -24px auto 42px;
-  text-align: center;
-  font-size: 17px;
-  line-height: 1.8;
 }
 
 .center-title {
@@ -828,19 +821,11 @@ img {
 }
 
 .staff {
-  background: #f2faf8;
   padding: 92px 0 70px;
 }
 
 .staff .center-title {
-  margin-bottom: 12px;
-}
-
-.staff-intro {
-  margin: 0 auto 42px;
-  text-align: center;
-  font-size: 17px;
-  line-height: 1.8;
+  margin-bottom: 60px;
 }
 
 .staff-item {
