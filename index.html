@@ -336,7 +336,7 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReducedMotion) {
-      const revealItems = document.querySelectorAll('main section, main article, .photo-strip figure, .news-copy, .greeting-inner, .about-inner, .access-inner, .contact-inner');
+      const revealItems = document.querySelectorAll('main > section');
 
       revealItems.forEach((item) => {
         item.classList.add('reveal');
