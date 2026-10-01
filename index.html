@@ -245,7 +245,14 @@
       <div class="section-width">
         <h2 class="center-title">アクセス</h2>
         <div class="access-inner">
-          <img src="./assets/map.jpg" alt="佐藤医院へのアクセスマップ">
+          <div class="map-viewer" aria-label="佐藤医院へのアクセスマップ。ドラッグで移動、ホイールで拡大縮小できます。">
+            <img src="./assets/map.jpg" alt="佐藤医院へのアクセスマップ">
+            <div class="map-controls" aria-label="地図操作">
+              <button class="map-control" type="button" data-map-action="zoom-in" aria-label="地図を拡大">＋</button>
+              <button class="map-control" type="button" data-map-action="zoom-out" aria-label="地図を縮小">−</button>
+              <button class="map-control map-reset" type="button" data-map-action="reset" aria-label="地図を初期位置に戻す">⌂</button>
+            </div>
+          </div>
           <div class="access-copy">
             <h3>所在地</h3>
             <ul>
@@ -334,6 +341,90 @@
   </footer>
 
   <script>
+    const mapViewer = document.querySelector('.map-viewer');
+    const mapImage = mapViewer.querySelector('img');
+    const mapControls = mapViewer.querySelectorAll('[data-map-action]');
+    let mapScale = 1;
+    let mapX = 0;
+    let mapY = 0;
+    let activePointerId = null;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let mapStartX = 0;
+    let mapStartY = 0;
+
+    const updateMapTransform = () => {
+      mapImage.style.transform = `translate(${mapX}px, ${mapY}px) scale(${mapScale})`;
+    };
+
+    const limitMapOffset = () => {
+      const maxX = (mapViewer.clientWidth * (mapScale - 1)) / 2;
+      const maxY = (mapViewer.clientHeight * (mapScale - 1)) / 2;
+      mapX = Math.max(-maxX, Math.min(maxX, mapX));
+      mapY = Math.max(-maxY, Math.min(maxY, mapY));
+    };
+
+    const setMapScale = (nextScale) => {
+      mapScale = Math.max(1, Math.min(3, nextScale));
+      limitMapOffset();
+      updateMapTransform();
+    };
+
+    mapViewer.addEventListener('wheel', (event) => {
+      event.preventDefault();
+      setMapScale(mapScale - event.deltaY * 0.001);
+    }, { passive: false });
+
+    mapViewer.addEventListener('dblclick', () => {
+      setMapScale(mapScale + 0.5);
+    });
+
+    mapControls.forEach((control) => {
+      control.addEventListener('pointerdown', (event) => {
+        event.stopPropagation();
+      });
+
+      control.addEventListener('click', () => {
+        const action = control.dataset.mapAction;
+        if (action === 'zoom-in') setMapScale(mapScale + 0.25);
+        if (action === 'zoom-out') setMapScale(mapScale - 0.25);
+        if (action === 'reset') {
+          mapScale = 1;
+          mapX = 0;
+          mapY = 0;
+          updateMapTransform();
+        }
+      });
+    });
+
+    mapViewer.addEventListener('pointerdown', (event) => {
+      activePointerId = event.pointerId;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      mapStartX = mapX;
+      mapStartY = mapY;
+      mapViewer.classList.add('is-dragging');
+      mapViewer.setPointerCapture(event.pointerId);
+    });
+
+    mapViewer.addEventListener('pointermove', (event) => {
+      if (event.pointerId !== activePointerId) return;
+      mapX = mapStartX + event.clientX - pointerStartX;
+      mapY = mapStartY + event.clientY - pointerStartY;
+      limitMapOffset();
+      updateMapTransform();
+    });
+
+    const endMapDrag = (event) => {
+      if (event.pointerId !== activePointerId) return;
+      activePointerId = null;
+      mapViewer.classList.remove('is-dragging');
+      mapViewer.releasePointerCapture(event.pointerId);
+    };
+
+    mapViewer.addEventListener('pointerup', endMapDrag);
+    mapViewer.addEventListener('pointercancel', endMapDrag);
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReducedMotion) {
