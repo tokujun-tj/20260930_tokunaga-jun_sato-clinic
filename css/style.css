@@ -941,8 +941,17 @@ img {
   padding-left: 1.2em;
 }
 
+.access-copy ul:first-of-type {
+  margin-bottom: 14px;
+}
+
 .access-copy li {
   margin: 8px 0;
+  font-size: 18px;
+}
+
+.access-copy p {
+  margin: 0 0 32px;
   font-size: 18px;
 }
 
@@ -1209,6 +1218,7 @@ footer {
   .access-inner > img { width: 100%; height: 240px; }
   .access-copy h3 { font-size: 23px; }
   .access-copy li { font-size: 16px; overflow-wrap: anywhere; }
+  .access-copy p { font-size: 16px; }
 
   .contact { min-height: 0; padding: 50px 0 56px; }
   .contact h2 { margin-bottom: 20px; font-size: 30px; }
@@ -1310,6 +1320,7 @@ footer {
   .access-inner > img { height: 210px; }
   .access-copy h3 { font-size: 21px; }
   .access-copy li { font-size: 15px; }
+  .access-copy p { font-size: 15px; }
 
   .contact { padding: 40px 0 44px; }
   .contact h2 { font-size: 26px; }
