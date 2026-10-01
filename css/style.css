@@ -288,6 +288,29 @@ img {
   text-shadow: 0 2px 7px rgba(0, 0, 0, .95);
 }
 
+@keyframes photo-caption-enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photo-strip.is-visible figcaption {
+  animation: photo-caption-enter .8s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.photo-strip.is-visible figure:nth-child(2) figcaption {
+  animation-delay: .14s;
+}
+
+.photo-strip.is-visible figure:nth-child(3) figcaption {
+  animation-delay: .28s;
+}
+
 .photo-strip figure::after {
   content: "";
   position: absolute;
