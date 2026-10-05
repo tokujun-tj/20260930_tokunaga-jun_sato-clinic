@@ -94,9 +94,9 @@ img {
 .nav {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 12px;
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -104,8 +104,8 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 10px 16px;
+  min-height: 40px;
+  padding: 8px 10px;
   border-radius: 999px;
   transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
@@ -374,6 +374,118 @@ img {
 
 .news-detail-page {
   padding: 56px 0 80px;
+}
+
+.faq-page {
+  padding: 56px 0 80px;
+  background: var(--pale);
+}
+
+.faq-wrap {
+  width: 900px;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+}
+
+.faq-header {
+  margin-bottom: 40px;
+}
+
+.faq-header h1 {
+  margin: 0 0 12px;
+  font-size: 42px;
+  line-height: 1.4;
+}
+@media (min-width: 1251px) and (max-width: 1350px) {
+  .header-inner {
+    gap: 16px;
+  }
+
+  .logo {
+    width: 160px;
+  }
+
+  .nav {
+    gap: 6px;
+    font-size: 15px;
+  }
+
+  .nav a {
+    padding: 8px;
+  }
+
+  .contact-btn {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+}
+
+.faq-header p {
+  margin: 0;
+  color: #4a4a4a;
+}
+
+.faq-category + .faq-category {
+  margin-top: 38px;
+}
+
+.faq-category h2 {
+  margin: 0 0 8px;
+  padding-left: 14px;
+  border-left: 4px solid var(--green);
+  font-size: 26px;
+}
+
+.faq-list {
+  margin: 0;
+  border-top: 1px solid #cbdedb;
+}
+
+.faq-item {
+  padding: 18px 0;
+  border-bottom: 1px solid #cbdedb;
+}
+
+.faq-item dt {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.faq-item dd {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.faq-label {
+  margin-right: 8px;
+  color: #267f74;
+  font-weight: 700;
+}
+
+.faq-closing {
+  margin: 40px 0 0;
+  font-weight: 600;
+}
+
+.faq-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 12px 22px;
+  border: 1px solid #222;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.faq-back:hover,
+.faq-back:focus-visible {
+  background: #f4faf9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(17, 17, 17, .08);
 }
 
 .news-detail-wrap {
@@ -710,7 +822,7 @@ img {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -724,8 +836,7 @@ img {
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.service-card:hover,
-.service-card:focus-visible {
+.service-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 28px rgba(17, 17, 17, .06);
 }
@@ -820,6 +931,12 @@ img {
   margin-bottom: 0;
 }
 
+.about-page-card section + section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #dde8e6;
+}
+
 .about-page-image {
   padding: 16px;
 }
@@ -829,6 +946,75 @@ img {
   height: 420px;
   object-fit: cover;
   border-radius: 16px;
+}
+
+.about-page-sections {
+  margin-top: 40px;
+}
+
+.about-page-section {
+  padding: 28px 0;
+  border-top: 1px solid #dde8e6;
+}
+
+.about-page-section h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.about-page-section p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.about-page-section ul {
+  margin: 14px 0 0;
+  padding-left: 1.3em;
+}
+
+.about-page-section li {
+  margin: 8px 0;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.about-policy-table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+}
+
+.about-policy-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #fff;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.about-policy-table th,
+.about-policy-table td {
+  padding: 12px 14px;
+  border: 1px solid #cbdedb;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.about-policy-table thead th {
+  background: #e8f4f2;
+  font-weight: 700;
+}
+
+.about-policy-table th:first-child {
+  width: 52px;
+  text-align: center;
+}
+
+.about-policy-table td:nth-child(2) {
+  width: 225px;
+  font-weight: 600;
 }
 
 .about-page-back {
@@ -885,19 +1071,26 @@ img {
   background: #f2faf8;
   padding: 92px 0 70px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 32px;
 }
 
 .staff>* {
   width: 100%;
   max-width: 1280px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .staff .center-title {
   grid-column: 1 / -1;
   margin-bottom: 12px;
+}
+
+.staff-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  line-height: 1.8;
 }
 
 .staff-intro {
@@ -926,15 +1119,29 @@ img {
   font-size: 26px;
 }
 
-.staff-item ul {
+.staff-details {
+  display: grid;
+  gap: 10px;
   margin: 0;
-  padding-left: 1.2em;
 }
 
-.staff-item li {
-  margin: 8px 0;
-  font-size: 17px;
-  line-height: 1.6;
+.staff-details>div {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+.staff-details dt {
+  color: #267f74;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.staff-details dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
 }
 
 .access {
@@ -1458,7 +1665,7 @@ footer {
     font-size: 22px;
   }
 
-  .staff-item li {
+  .staff-details dd {
     font-size: 15px;
   }
 
@@ -1514,14 +1721,16 @@ footer {
   .services-page,
   .about-page,
   .news-detail-page,
-  .news-archive-page {
+  .news-archive-page,
+  .faq-page {
     padding: 40px 0 56px;
   }
 
   .services-wrap,
   .about-page-wrap,
   .news-detail-wrap,
-  .news-archive-wrap {
+  .news-archive-wrap,
+  .faq-wrap {
     width: auto;
     max-width: none;
     margin: 0 16px;
@@ -1529,8 +1738,21 @@ footer {
 
   .services-header h1,
   .about-page-header h1,
-  .archive-header h1 {
+  .archive-header h1,
+  .faq-header h1 {
     font-size: 32px;
+  }
+
+  .faq-category h2 {
+    font-size: 23px;
+  }
+
+  .faq-item dt {
+    font-size: 16px;
+  }
+
+  .faq-item dd {
+    font-size: 15px;
   }
 
   .services-grid,
@@ -1551,6 +1773,29 @@ footer {
   .service-card p,
   .about-page-card p {
     font-size: 16px;
+  }
+
+  .about-page-section h2 {
+    font-size: 23px;
+  }
+
+  .about-page-section p,
+  .about-page-section li {
+    font-size: 15px;
+  }
+
+  .about-policy-table th,
+  .about-policy-table td {
+    padding: 8px 7px;
+    font-size: 13px;
+  }
+
+  .about-policy-table th:first-child {
+    width: 34px;
+  }
+
+  .about-policy-table td:nth-child(2) {
+    width: 130px;
   }
 
   .about-page-card {
@@ -1618,6 +1863,10 @@ footer {
     padding: 7px 4px;
     font-size: 11px;
     white-space: normal;
+  }
+
+  .nav a:last-child {
+    grid-column: 1 / -1;
   }
 
   .section-width {
