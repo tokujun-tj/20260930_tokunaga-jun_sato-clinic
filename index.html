@@ -193,18 +193,6 @@
       </article>
 
       <article class="staff-item">
-        <img src="./assets/Doctor_Image/takahashi_yumi.jpg" alt="副院長 佐藤花子">
-        <div>
-          <h3>副院長：佐藤 花子</h3>
-          <ul>
-            <li>専門：一般内科・生活習慣病</li>
-            <li>日々の体調管理から慢性疾患まで、患者さまに寄り添った診療を行います。</li>
-            <li>生活背景も含めて丁寧にお話を伺い、無理のない治療をご提案します。</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="staff-item">
         <img src="./assets/Medical_Image/medical_3.jpg" alt="看護師長 鈴木真理">
         <div>
           <h3>看護師長：鈴木 真理</h3>
@@ -245,8 +233,9 @@
       <div class="section-width">
         <h2 class="center-title">アクセス</h2>
         <div class="access-inner">
-          <div class="map-viewer" aria-label="佐藤医院へのアクセスマップ。ドラッグで移動、ホイールで拡大縮小できます。">
+          <div class="map-viewer" aria-label="佐藤医院へのアクセスマップ。ドラッグで移動、Ctrlキーを押しながらホイールで拡大縮小できます。">
             <img src="./assets/map.jpg" alt="佐藤医院へのアクセスマップ">
+            <div class="map-zoom-hint" role="status">地図をズームするには、Ctrl キーを押しながらスクロールしてください</div>
             <div class="map-controls" aria-label="地図操作">
               <button class="map-control" type="button" data-map-action="zoom-in" aria-label="地図を拡大">＋</button>
               <button class="map-control" type="button" data-map-action="zoom-out" aria-label="地図を縮小">−</button>
@@ -347,6 +336,7 @@
     let mapScale = 1;
     let mapX = 0;
     let mapY = 0;
+    let mapHintTimeout;
     let activePointerId = null;
     let pointerStartX = 0;
     let pointerStartY = 0;
@@ -372,6 +362,16 @@
 
     mapViewer.addEventListener('wheel', (event) => {
       event.preventDefault();
+      if (!event.ctrlKey) {
+        mapViewer.classList.add('show-zoom-hint');
+        clearTimeout(mapHintTimeout);
+        mapHintTimeout = setTimeout(() => {
+          mapViewer.classList.remove('show-zoom-hint');
+        }, 2500);
+        return;
+      }
+      clearTimeout(mapHintTimeout);
+      mapViewer.classList.remove('show-zoom-hint');
       setMapScale(mapScale - event.deltaY * 0.001);
     }, { passive: false });
 
