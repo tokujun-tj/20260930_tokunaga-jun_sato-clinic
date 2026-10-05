@@ -255,6 +255,12 @@ img {
   margin: 3px 0;
 }
 
+.hours-bottom-guidance {
+  margin: 18px 0 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
 .photo-strip {
   height: 330px;
   display: grid;
